@@ -1,3 +1,4 @@
+// home slid bg
 var slideIndex = 1;
 showSlides(slideIndex);
         
@@ -23,4 +24,16 @@ function showSlides(n) {
     }
     slides[slideIndex-1].style.display = "block";  
     dots[slideIndex-1].className += " active";
+}
+
+
+// register password check
+function Validate() {
+    var password = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("confirm_password").value;
+    if (password != confirmPassword) {
+        alert("Passwords do not match.");
+        return false;
+    }
+    return true;
 }
