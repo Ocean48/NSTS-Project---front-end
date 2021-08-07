@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 07, 2021 at 03:01 AM
+-- Generation Time: Aug 07, 2021 at 03:09 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -40,7 +40,9 @@ CREATE TABLE IF NOT EXISTS `account` (
 INSERT INTO `account` (`email`, `password`) VALUES
 ('sirayno2@gmail.com', 'siray123'),
 ('test@gamil.com', '123456'),
-('abc@gmail.com', '654321');
+('abc@gmail.com', '654321'),
+('', ''),
+('lol@lol.lol', '888888');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
