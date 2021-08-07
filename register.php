@@ -1,53 +1,132 @@
-<?php
-    $go = TRUE;
-    $email = $_POST["email"];
-    $password = $_POST["password"];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <title>Index</title>
+
+    <style>
+        input {
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        }
+
+        input[type=submit] {
+        background-color: #04AA6D;
+        color: white;
+        }
+    </style>
+
+</head>
+<body>
     
+    <header>
+        <div class="container_header">
+            <img src="images/logo.png" alt="logo" class="logo">
+        
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="sign_in.php">Account</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    $conn = mysqli_connect("localhost", "root", "123456", "nozuonodie");
+    <div style="float: left; padding-left: 40%; padding-top: 7%;">
+        <h1 class="login_title2">Register</h1>
+        <form class="login_form2" method="POST">
+            <label for="email">Email</label>
+            <br>
+            <input name="email" type="email" style="margin-top: 3%; margin-bottom: 5%; padding: 3%; width: 180px; font-style: italic;" placeholder="Email" required>
+            <br>
+            <label for="password_confirm">Password</label>
+            <br>
+            <input type="password" style="margin-top: 3%; margin-bottom: 5%; padding: 3%; width: 180px; font-style: italic;" minlength="6" placeholder="Password" id="password" required>
+            <input name="password" type="password" style="margin-top: 3%; margin-bottom: 5%; padding: 3%; width: 180px; font-style: italic;" minlength="6" placeholder="Type password again" id="confirm_password" required>
+            <br>
             
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+            <input type="submit" style="margin-top: 3%; margin-bottom: 5%; padding: 3%;" value="Register" onclick="return Validate()">
 
-    }
-    else {
-        echo "connedted <br>";
-    }
+            <script src="js/script.js"></script>
+        </form> 
+    </div>
 
-    $sql = "SELECT `email` FROM `account`";
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
-    $result = $conn->query($sql);
+</body>
+</html>
 
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
 
-            if ($email == $row['email']) {
-                $go = FALSE;
-                break;
-            }
-            else {   //if email is new
-                $go = TRUE;
-            }
+<?php
+
+    if(isset($_POST["email"])){
+        $go = TRUE;
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        
+
+        $conn = mysqli_connect("localhost", "root", "123456", "nozuonodie");
+                
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+
         }
-    } 
-    else {
-          echo "0 results";
-    }
-
-    if ($go == TRUE) {
-        $sql = "INSERT INTO `account`(`email`, `password`) VALUES ('$email', '$password')";
-
-                        
-        if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
-        } 
+        /*
         else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "connedted <br>";
         }
-    }
-    else {
-        echo "email used";
-    }
+        */
 
-    $conn->close();
+        $sql = "SELECT `email` FROM `account`";
+
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+
+                if ($email == $row['email']) {
+                    $go = FALSE;
+                    break;
+                }
+                else {   //if email is new
+                    $go = TRUE;
+                }
+            }
+        } 
+        /*
+        else {
+            echo "0 results";
+        }
+        */
+
+        if ($go == TRUE) {
+            $sql = "INSERT INTO `account`(`email`, `password`) VALUES ('$email', '$password')";
+
+                            
+            if ($conn->query($sql) === TRUE) {
+                echo '<script>alert("New record created successfully")</script>';
+            } 
+            else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+        }
+        else {
+            echo '<script>alert("email used")</script>';
+        }
+
+        $conn->close();
+    }
 ?>
