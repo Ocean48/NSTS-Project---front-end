@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 01, 2021 at 02:53 AM
+-- Generation Time: Aug 07, 2021 at 03:01 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -29,24 +29,18 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `account`;
 CREATE TABLE IF NOT EXISTS `account` (
-  `user_name` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+  `email` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf16;
 
 --
--- Table structure for table `test_img`
+-- Dumping data for table `account`
 --
 
-DROP TABLE IF EXISTS `test_img`;
-CREATE TABLE IF NOT EXISTS `test_img` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `dir` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+INSERT INTO `account` (`email`, `password`) VALUES
+('sirayno2@gmail.com', 'siray123'),
+('test@gamil.com', '123456'),
+('abc@gmail.com', '654321');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
