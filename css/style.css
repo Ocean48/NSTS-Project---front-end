@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
 body {
     margin: 0;
-    background: #ffffff;
+    background: #f8f8f8;
     font-family: "Work Sans", sans-serif;
     font-weight: 300;
 }
@@ -226,5 +226,21 @@ header a:hover::before {
 .news_button:hover {
     color: #ffffff;
     background-color: #af0000;
+
+}
+
+.event_button {
+    border: none;
+    padding-left: 1%;
+    background-color: #ffffff;
+    color: #0e0d0d;
+    text-align: center;
+    font-size: xx-large;
+    cursor: pointer;
+}
+
+.event_button:hover {
+    color: #ffffff;
+    background-color: #a3a3a3;
 
 }
