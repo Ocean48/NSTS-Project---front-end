@@ -25,15 +25,39 @@
             </nav>
         </div>
     </header>
-    <button class="event_button" onclick="window.location.href='news.php'">☚<span style="font-size:x-large;"><b>Back</b></span></button>
+    <button class="event_button" onclick="window.location.href='news.php'">☚<span style="font-size:x-large;"><b>Back </b></span></button>
 
-    <p>Event</p>
+    <?php
+        $t = $_POST['t'];
+
+        $conn = mysqli_connect("localhost", "root", "123456", "nozuonodie");
+                        
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+
+        }
+        $sql = "SELECT `title`, `short_info`, `main_description`, `upload_date`, `image_url` FROM `event`";
+
+        $result = $conn->query($sql);
+        
+        while ($row = $result->fetch_assoc()) {
+            if ($t == $row['title']) {
+                echo '<h1 style="padding-top: 1%; padding-left: 10%; font-size: xx-large;">'.$row['title'].'</h1><br>
+                <img style="float: left; padding-left: 5%; padding-right: 1%;" src="'.$row['image_url'].'" alt="image">
+                <p style="font-size: larger; padding-right: 5%;">'.$row['main_description'].'</p><br>
+                <p style="font-size: large; padding-left: 75%"> Uploaded: '.$row['upload_date'].'</p>';
+
+                break;
+            }
+        }
+        $conn->close();
+    ?>
     
     <footer class="container_footer">
         <div class="footer_logo">
             <img src="https://i.ibb.co/vq7sysz/logo.png" alt="logo">
         </div>
-        <h2 style="padding-top: 1%; padding-left: 1%; font-size: xx-large;">NTST-Tech Development Ltd.</h2>
+        <h2 class="footer_comp_name">NTST-Tech Development Ltd.</h2>
         <div class="contact_us">
             <li style="font-size: x-large; font-weight: bold;">CONTACT US</li>
             <li style="background: url(https://i.ibb.co/3pm5jWx/tel.png) no-repeat 0; padding-left: 12%;">(123)456-7890</li>
@@ -50,21 +74,3 @@
     </footer>
 </body>
 </html>
-
-
-<?php
-    $t = $_POST['t'];
-    echo $t;
-
-    $conn = mysqli_connect("localhost", "root", "123456", "nozuonodie");
-                    
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-
-    }
-    $sql = "SELECT `title`, `info`, `date` FROM `news`";
-
-    $result = $conn->query($sql);
-
-
-?>

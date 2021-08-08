@@ -18,7 +18,7 @@
         }
 
         input[type=submit] {
-            background-color: #c7ffff;
+            background-color: #d0fcfc;
             color: #000000;
         }
 
@@ -56,31 +56,34 @@
                 die("Connection failed: " . $conn->connect_error);
 
             }
-            $sql = "SELECT `title`, `info`, `date` FROM `news`";
+            $sql = "SELECT `title`, `short_info`, `main_description`, `upload_date`, `image_url` FROM `event`";
 
             $result = $conn->query($sql);
 
+            $count = mysqli_num_rows($result);
+            
             while ($row = $result->fetch_assoc()) {
-
-                echo '<form style="background-color: #dffafa; margin-left: 5%; margin-right: 5%;" action = "event.php" method="POST">
+                echo '<form style="background-color: #e0fcfc; margin-left: 5%; margin-right: 5%;" action = "event.php" method="POST">
                 <li style=" margin-top: 2%; list-style-type: none;">
-                <input name="t" type="submit" value="'.$row['title'].'">
-                <ul>
-                <li style="height: 70px; list-style-type: none;">'.substr($row['info'],0, 50).'</li>
-                </ul>
-                
+                    <input name="t" type="submit" value="'.$row['title'].'">
+                        <ul>
+                            <li style="list-style-type: none; padding-right: 0.25%;">'.substr($row['short_info'],0, 250).'</li>
+                                <ul>
+                                <li style="list-style-type: none; padding-top: 0.25%; padding-bottom: 1%; padding-left: 80%;"> Uploaded: '.$row['upload_date'].'</li>
+                                </ul>
+                        </ul>
                 </li></form>';
-
             }
+            $conn->close();
         ?>
 
-    <p>News</p>
+    <br>
     
     <footer class="container_footer">
         <div class="footer_logo">
             <img src="https://i.ibb.co/vq7sysz/logo.png" alt="logo">
         </div>
-        <h2 style="padding-top: 1%; padding-left: 1%; font-size: xx-large;">NTST-Tech Development Ltd.</h2>
+        <h2 class="footer_comp_name">NTST-Tech Development Ltd.</h2>
         <div class="contact_us">
             <li style="font-size: x-large; font-weight: bold;">CONTACT US</li>
             <li style="background: url(https://i.ibb.co/3pm5jWx/tel.png) no-repeat 0; padding-left: 12%;">(123)456-7890</li>
