@@ -8,18 +8,23 @@
     <title>news</title>
     <style>
         input {
-            width: 90%;
+            height: 35px;
+            width: 100%;
             border: none;
-            border-radius: 4px;
             box-sizing: border-box;
-            font-size: x-large;
+            font-size: 20px;
             text-align: left;
-            padding-left: 10%;
+            padding-left: 1%;
         }
 
         input[type=submit] {
-            background-color: #ffffff;
+            background-color: #d0fcfc;
             color: #000000;
+        }
+
+        input:hover {
+            text-decoration: underline;
+            color: #0b00e3;
         }
     </style>
 </head>
@@ -41,7 +46,7 @@
         </div>
     </header>
 
-    <h1 style="color: #af0000; text-align: center; font-size: 40px;">News</h1>
+    <h1 style="color: #af0000; text-align: center; font-size: 40px;">Products</h1>
 
         <?php
 
@@ -51,26 +56,34 @@
                 die("Connection failed: " . $conn->connect_error);
 
             }
-            $sql = "SELECT `title`, `info`, `date` FROM `news`";
+            $sql = "SELECT `name`, `image_url`, `info`, `price`, `chart_url` FROM `products`";
 
             $result = $conn->query($sql);
 
+            $count = mysqli_num_rows($result);
+            
             while ($row = $result->fetch_assoc()) {
-
-                echo '<form action = "event.php" method="POST">
-                <li style="margin-left: 10%; margin-top: 2%; margin-right: 5%; list-style-type: none; border:2px solid;"><input name="t" type="submit" value="'.$row['title'].'          '.$row['date'].'"">
-                <input name="t" type="submit" value="'.substr($row['info'], 0, 100).'...'. '"><br></li></form>';
-
+                echo '<form style="background-color: #e0fcfc; margin-left: 5%; margin-right: 5%;" action = "event.php" method="POST">
+                <li style=" margin-top: 2%; list-style-type: none;">
+                    <input name="t" type="submit" value="'.$row['title'].'">
+                        <ul>
+                            <li style="list-style-type: none; padding-right: 0.25%;">'.substr($row['short_info'],0, 250).'</li>
+                                <ul>
+                                <li style="list-style-type: none; padding-top: 0.25%; padding-bottom: 1%; padding-left: 80%;"> Uploaded: '.$row['upload_date'].'</li>
+                                </ul>
+                        </ul>
+                </li></form>';
             }
+            $conn->close();
         ?>
 
-    <p>News</p>
+    <br>
     
     <footer class="container_footer">
         <div class="footer_logo">
             <img src="https://i.ibb.co/vq7sysz/logo.png" alt="logo">
         </div>
-        <h2 style="padding-top: 1%; padding-left: 1%; font-size: xx-large;">NTST-Tech Development Ltd.</h2>
+        <h2 class="footer_comp_name">NTST-Tech Development Ltd.</h2>
         <div class="contact_us">
             <li style="font-size: x-large; font-weight: bold;">CONTACT US</li>
             <li style="background: url(https://i.ibb.co/3pm5jWx/tel.png) no-repeat 0; padding-left: 12%;">(123)456-7890</li>
