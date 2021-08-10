@@ -5,20 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <title>news</title>
+    <title>Products</title>
     <style>
         input {
-            height: 35px;
-            width: 100%;
+            background: #f8f8f8;
+            text-align: center;
+            width: 200px;
             border: none;
             box-sizing: border-box;
             font-size: 20px;
-            text-align: left;
-            padding-left: 1%;
         }
 
         input[type=submit] {
-            background-color: #d0fcfc;
             color: #000000;
         }
 
@@ -48,36 +46,31 @@
 
     <h1 style="color: #af0000; text-align: center; font-size: 40px;">Products</h1>
 
-        <?php
-
-            $conn = mysqli_connect("localhost", "root", "123456", "nozuonodie");
+    <?php
+        $conn = mysqli_connect("localhost", "root", "123456", "nozuonodie");
                     
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
 
-            }
-            $sql = "SELECT `name`, `image_url`, `info`, `price`, `chart_url` FROM `products`";
+        }
+        $sql = "SELECT `name`, `image_url`, `info`, `price`, `chart_url` FROM `products`";
 
-            $result = $conn->query($sql);
-
-            $count = mysqli_num_rows($result);
+        $result = $conn->query($sql);
             
-            while ($row = $result->fetch_assoc()) {
-                echo '<form style="background-color: #e0fcfc; margin-left: 5%; margin-right: 5%;" action = "event.php" method="POST">
-                <li style=" margin-top: 2%; list-style-type: none;">
-                    <input name="t" type="submit" value="'.$row['title'].'">
-                        <ul>
-                            <li style="list-style-type: none; padding-right: 0.25%;">'.substr($row['short_info'],0, 250).'</li>
-                                <ul>
-                                <li style="list-style-type: none; padding-top: 0.25%; padding-bottom: 1%; padding-left: 80%;"> Uploaded: '.$row['upload_date'].'</li>
-                                </ul>
-                        </ul>
+        while ($row = $result->fetch_assoc()) {
+            echo '<form style="margin-left: 3%; margin-right: 5%;" action = "product.php" method="POST">   
+                <li style="float: left; display: block; margin-left: 15%; margin-top: 2%; list-style-type: none;">
+                    <input name="t" type="submit" value="'.$row['name'].'">    
+                    <br><img src="'.$row['image_url'].'"width="200" height="200" alt="image">
+                    <p style="text-align: center;">$'.$row['price'].'</p>
+                    
+                    
                 </li></form>';
-            }
-            $conn->close();
-        ?>
+        }
+        $conn->close();
+    ?>
 
-    <br>
+    <br style="clear: both;"><br style="clear: both;"><br style="clear: both;">
     
     <footer class="container_footer">
         <div class="footer_logo">
@@ -98,6 +91,7 @@
         
         <p class="copyright">Copyright &copy; <script>document.write(new Date().getFullYear())</script> All Rights Reserved</p>
     </footer>
+
 </body>
 </html>
 

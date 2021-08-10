@@ -27,15 +27,14 @@
                         break;
                     }
                     else {
-                        echo '<script>alert("wrong password")</script>';
+                        echo '<script>alert("wrong email or password")</script>';
                         break;
                     }
                 }
-                /*
                 else {   //if email is new
-                    echo "this is a new email <br>";
+                    echo '<script>alert("wrong email or password")</script>';
+                    break;
                 }
-                */
             }
         } 
         /*
@@ -54,7 +53,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <title>Index</title>
+    <title>Sign in</title>
 
     <style>
         input {
@@ -105,12 +104,28 @@
             <a href="register.php">Registe Today!</a>
         </form> 
     </div>
+    
+    <br style="clear: both;"><br style="clear: both;"><br style="clear: both;">
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <footer class="container_footer">
+        <div class="footer_logo">
+            <img src="https://i.ibb.co/vq7sysz/logo.png" alt="logo">
+        </div>
+        <h2 class="footer_comp_name">NTST-Tech Development Ltd.</h2>
+        <div class="contact_us">
+            <li style="font-size: x-large; font-weight: bold;">CONTACT US</li>
+            <li style="background: url(https://i.ibb.co/3pm5jWx/tel.png) no-repeat 0; padding-left: 12%;">(123)456-7890</li>
+            <li style="background: url(https://i.ibb.co/WHscy1Q/email.png) no-repeat 0; padding-left: 12%;">email@gmail.com</li>
+        </div> 
+        <div class="follow_us">
+            <li style="font-size: x-large; font-weight: bold;">FOLLOW US</li>
+            <li style="background: url(https://i.ibb.co/nwDgBmM/facebook.png) no-repeat; background-position: -2.5%; padding-left: 16%; margin: 3px 0;"><a class="social_link" href="">Fackbook</a></li>
+            <li style="background: url(https://i.ibb.co/LDwsPN2/twitter.png) no-repeat; background-position: -1%; padding-left: 16%; margin: 3px 0;"><a class="social_link" href="">Twitter</a></li>
+            <li style="background: url(https://i.ibb.co/5L5rHhq/instgram.png) no-repeat; background-position: 1%; padding-left: 16%; margin: 3px 0;"><a class="social_link" href="">Instagram</a></li>
+        </div>
+        
+        <p class="copyright">Copyright &copy; <script>document.write(new Date().getFullYear())</script> All Rights Reserved</p>
+    </footer>
 
 </body>
 </html>

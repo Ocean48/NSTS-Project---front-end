@@ -5,34 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <title>News</title>
-    <style>
-        input {
-            height: 35px;
-            width: 100%;
-            border: none;
-            box-sizing: border-box;
-            font-size: 20px;
-            text-align: left;
-            padding-left: 1%;
-        }
-
-        input[type=submit] {
-            background-color: #d0fcfc;
-            color: #000000;
-        }
-
-        input:hover {
-            text-decoration: underline;
-            color: #0b00e3;
-        }
-    </style>
+    <title>
+        <?php
+            $t = $_POST['t'];
+            echo $t;
+        ?>
+    </title>
+    
 </head>
 <body>
     <header>
         <div class="container_header">
             <img src="https://i.ibb.co/vq7sysz/logo.png" alt="logo" class="logo">
-        
+            
             <nav>
                 <ul>
                     <li><a href="home.html">Home</a></li>
@@ -45,39 +30,35 @@
             </nav>
         </div>
     </header>
+    <button class="event_button" onclick="window.location.href='products.php'">☚<span style="font-size:x-large;"><b>Back </b></span></button>
 
-    <h1 style="color: #af0000; text-align: center; font-size: 40px;">News</h1>
+    <?php
+    
+        $t = $_POST['t'];
 
-        <?php
-
-            $conn = mysqli_connect("localhost", "root", "123456", "nozuonodie");
+        $conn = mysqli_connect("localhost", "root", "123456", "nozuonodie");
                     
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
 
-            }
-            $sql = "SELECT `title`, `short_info`, `main_description`, `upload_date`, `image_url` FROM `event`";
+        }
+        $sql = "SELECT `name`, `image_url`, `info`, `price`, `chart_url` FROM `products`";
 
-            $result = $conn->query($sql);
-
-            $count = mysqli_num_rows($result);
+        $result = $conn->query($sql);
             
-            while ($row = $result->fetch_assoc()) {
-                echo '<form style="background-color: #e0fcfc; margin-left: 5%; margin-right: 5%;" action = "event.php" method="POST">
-                <li style=" margin-top: 2%; list-style-type: none;">
-                    <input name="t" type="submit" value="'.$row['title'].'">
-                        <ul>
-                            <li style="list-style-type: none; padding-right: 0.25%;">'.substr($row['short_info'],0, 250).'</li>
-                                <ul>
-                                <li style="list-style-type: none; padding-top: 0.25%; padding-bottom: 1%; padding-left: 80%;"> Uploaded: '.$row['upload_date'].'</li>
-                                </ul>
-                        </ul>
-                </li></form>';
+        while ($row = $result->fetch_assoc()) {
+            if ($t == $row['name']) {
+                echo '<h1 style="color: #af0000; padding-top: 1%; padding-left: 10%; font-size: xx-large;">'.$row['name'].'</h1><br>';
+                echo '<img style="float: left; padding-left: 10%;" src="'.$row['image_url'].'"width="350" height="350" alt="image">
+                    <img style="float: left; padding-left: 10%;" src="'.$row['chart_url'].'"width="350" height="350" alt="image">';
+                echo '<p style="clear: both; padding-top: 2%; padding-left: 5%; padding-right: 5%;">'.$row['info'].'</p>
+                    <p style="padding-left: 85%;">Price: $'.$row['price'].'</p>';
+                   
+                break;
             }
-            $conn->close();
-        ?>
-
-    <br>
+        }
+        $conn->close();
+    ?>
     
     <footer class="container_footer">
         <div class="footer_logo">
@@ -100,5 +81,3 @@
     </footer>
 </body>
 </html>
-
-
