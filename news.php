@@ -19,7 +19,7 @@
 
         input[type=submit] {
             background-color: #d0fcfc;
-            color: #000000;
+            color: #180101;
         }
 
         input:hover {

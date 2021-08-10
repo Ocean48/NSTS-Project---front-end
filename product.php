@@ -30,34 +30,65 @@
             </nav>
         </div>
     </header>
+
     <button class="event_button" onclick="window.location.href='products.php'">☚<span style="font-size:x-large;"><b>Back </b></span></button>
 
     <?php
-    
+        session_start();
+
         $t = $_POST['t'];
 
-        $conn = mysqli_connect("localhost", "root", "123456", "nozuonodie");
-                    
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
+            $conn = mysqli_connect("localhost", "root", "123456", "nozuonodie");
+                        
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
 
-        }
-        $sql = "SELECT `name`, `image_url`, `info`, `price`, `chart_url` FROM `products`";
-
-        $result = $conn->query($sql);
-            
-        while ($row = $result->fetch_assoc()) {
-            if ($t == $row['name']) {
-                echo '<h1 style="color: #af0000; padding-top: 1%; padding-left: 10%; font-size: xx-large;">'.$row['name'].'</h1><br>';
-                echo '<img style="float: left; padding-left: 10%;" src="'.$row['image_url'].'"width="350" height="350" alt="image">
-                    <img style="float: left; padding-left: 10%;" src="'.$row['chart_url'].'"width="350" height="350" alt="image">';
-                echo '<p style="clear: both; padding-top: 2%; padding-left: 5%; padding-right: 5%;">'.$row['info'].'</p>
-                    <p style="padding-left: 85%;">Price: $'.$row['price'].'</p>';
-                   
-                break;
             }
+            $sql = "SELECT `name`, `image_url`, `info`, `price`, `chart_url` FROM `products`";
+
+            $result = $conn->query($sql);
+
+        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+            $go = FALSE;
+            $e = $_SESSION['email'];
+                
+            while ($row = $result->fetch_assoc()) {
+                if ($t == $row['name']) {
+                    echo '<h1 style="color: #af0000; padding-top: 1%; padding-left: 10%; font-size: xx-large;">'.$row['name'].'</h1><br>';
+                    echo '<img style="float: left; padding-left: 10%;" src="'.$row['image_url'].'"width="350" height="350" alt="image">
+                        <img style="float: left; padding-left: 10%;" src="'.$row['chart_url'].'"width="350" height="350" alt="image">';
+
+                    echo '<p style="font-size: 20px; clear: both; padding-top: 2%; padding-left: 5%; padding-right: 5%;">'.$row['info'].'</p>
+                        <p style="font-size: 18px; padding-left: 85%;">Price: $'.$row['price'].'</p>';
+                    $go = TRUE;
+                    break;
+                }
+            }
+            if ($go == TRUE) {
+                echo "test2";
+                $sql = "INSERT INTO `cart`(`email`, `name`) VALUES ('test2','test2')";
+            }
+            $conn->close();
         }
-        $conn->close();
+
+        else {
+            echo '<br><p style="text-align: center; color: red; font-size: x-large;"><b>Please sign in to use cart!</b></p>';
+                
+            while ($row = $result->fetch_assoc()) {
+                if ($t == $row['name']) {
+                    echo '<h1 style="color: #af0000; padding-top: 1%; padding-left: 10%; font-size: xx-large;">'.$row['name'].'</h1><br>';
+                    echo '<img style="float: left; padding-left: 10%;" src="'.$row['image_url'].'"width="350" height="350" alt="image">
+                        <img style="float: left; padding-left: 10%;" src="'.$row['chart_url'].'"width="350" height="350" alt="image">';
+                    echo '<p style="font-size: 20px; clear: both; padding-top: 2%; padding-left: 5%; padding-right: 5%;">'.$row['info'].'</p>
+                        <p style="font-size: 18px; padding-left: 85%;">Price: $'.$row['price'].'</p>';
+                    
+                    break;
+                }
+            }
+            $conn->close();
+        }
+    
+        
     ?>
     
     <footer class="container_footer">

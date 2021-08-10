@@ -45,7 +45,11 @@
 
                             
             if ($conn->query($sql) === TRUE) {
-                echo '<script>alert("New record created successfully")</script>';
+                session_start();
+                $_SESSION['loggedin'] = true;
+                $_SESSION['email'] = $email;
+                header("refresh:1; url=home.html");
+                exit();
             } 
             else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
@@ -103,8 +107,8 @@
     </header>
 
     <div style="float: left; padding-left: 40%; padding-top: 2%;">
-        <h1 class="login_title2">Register</h1>
-        <form class="login_form2" method="POST">
+        <h1>Register</h1>
+        <form method="POST">
             <label for="email">Email</label>
             <br>
             <input name="email" type="email" style="margin-top: 3%; margin-bottom: 5%; padding: 3%; width: 180px; font-style: italic;" placeholder="Email" required>
