@@ -60,13 +60,9 @@
 
                     echo '<p style="font-size: 20px; clear: both; padding-top: 2%; padding-left: 5%; padding-right: 5%;">'.$row['info'].'</p>
                         <p style="font-size: 18px; padding-left: 85%;">Price: $'.$row['price'].'</p>';
-                    $go = TRUE;
-                    break;
+                    echo "test2";
+                    $sql = "INSERT INTO `cart`(`email`, `name`) VALUES ('test2','test2')";
                 }
-            }
-            if ($go == TRUE) {
-                echo "test2";
-                $sql = "INSERT INTO `cart`(`email`, `name`) VALUES ('test2','test2')";
             }
             $conn->close();
         }
