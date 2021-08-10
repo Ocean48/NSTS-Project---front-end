@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 09, 2021 at 03:48 AM
+-- Generation Time: Aug 10, 2021 at 09:06 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -44,7 +44,31 @@ INSERT INTO `account` (`email`, `password`) VALUES
 ('g@g.g', 'gggggg'),
 ('test2@gmail.com', '666666'),
 ('siray@gmail.com', '111111'),
-('test3@gmail.ca', '000000');
+('test3@gmail.ca', '000000'),
+('n@n.n', '333333g'),
+('test48@gmail.com', '000000'),
+('test5@gmail.com', '123456'),
+('test6@gmail.com', '222222'),
+('test7@gmail.com', 'pass123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+DROP TABLE IF EXISTS `cart`;
+CREATE TABLE IF NOT EXISTS `cart` (
+  `email` varchar(40) CHARACTER SET utf8 NOT NULL,
+  `name` varchar(40) CHARACTER SET utf8 NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf16;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`email`, `name`) VALUES
+('\0t\0e\0s\0t', '\0t\0e\0s\0t');
 
 -- --------------------------------------------------------
 
