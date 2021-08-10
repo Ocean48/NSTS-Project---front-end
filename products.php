@@ -13,7 +13,7 @@
             width: 200px;
             border: none;
             box-sizing: border-box;
-            font-size: 20px;
+            font-size: 25px;
         }
 
         input[type=submit] {
@@ -62,7 +62,7 @@
                 <li style="float: left; display: block; margin-left: 15%; margin-top: 2%; list-style-type: none;">
                     <input name="t" type="submit" value="'.$row['name'].'">    
                     <br><img src="'.$row['image_url'].'"width="200" height="200" alt="image">
-                    <p style="text-align: center;">$'.$row['price'].'</p>
+                    <p style="font-size: 20px; text-align: center;">$'.$row['price'].'</p>
                     
                     
                 </li></form>';

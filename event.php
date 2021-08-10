@@ -47,10 +47,10 @@
         
         while ($row = $result->fetch_assoc()) {
             if ($t == $row['title']) {
-                echo '<h1 style="padding-top: 1%; padding-left: 10%; font-size: xx-large;">'.$row['title'].'</h1><br>
-                <img style="float: left; padding-left: 5%; padding-right: 1%;" src="'.$row['image_url'].'" alt="image">
-                <p style="font-size: larger; padding-right: 5%;">'.$row['main_description'].'</p><br>
-                <p style="font-size: large; padding-left: 75%"> Uploaded: '.$row['upload_date'].'</p>';
+                echo '<h1 style="color: #af0000; padding-top: 1%; padding-left: 10%; font-size: xx-large;">'.$row['title'].'</h1><br>';
+                echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url'].'" alt="image">';
+                echo '<p style="font-size: larger; padding-left: 5%; padding-right: 5%;">'.$row['main_description'].'</p><br>';
+                echo '<p style="font-size: large; padding-left: 75%"> Uploaded: '.$row['upload_date'].'</p>';
 
                 break;
             }
