@@ -10,7 +10,7 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "UPDATE `account` SET ";
+    $sql = "UPDATE `account` SET "; 
 
     if(strlen($ne) > 0){
     	$sql = $sql."`email` = '".$ne."'";
