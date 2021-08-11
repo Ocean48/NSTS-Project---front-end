@@ -17,7 +17,7 @@
         }
         form{
             margin-top: 2%;
-   			margin-left: 20%;
+   			margin-left: 20%; 
             font-size: large;
         }
 
