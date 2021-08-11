@@ -1,9 +1,8 @@
 <?php
-
-    if(isset($_POST["email"])){
+    if(isset($_POST["email_s"])){
         $go = TRUE;
-        $email = $_POST["email"];
-        $password = $_POST["password"];
+        $email = $_POST["email_s"];
+        $password = $_POST["password_s"];
         
 
         $conn = mysqli_connect("localhost", "root", "123456", "nozuonodie");
@@ -12,53 +11,17 @@
             die("Connection failed: " . $conn->connect_error);
 
         }
-        /*
-        else {
-            echo "connedted <br>";
-        }
-        */
-
-        $sql = "SELECT `email` FROM `account`";
+        $sql = "SELECT `email`, `password` FROM `account`";
 
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-
                 if ($email == $row['email']) {
-                    $go = FALSE;
-                    break;
-                }
-                else {   //if email is new
-                    $go = TRUE;
+                    
                 }
             }
         } 
-        /*
-        else {
-            echo "0 results";
-        }
-        */
-
-        if ($go == TRUE) {
-            $sql = "INSERT INTO `account`(`email`, `password`) VALUES ('$email', '$password')";
-
-                            
-            if ($conn->query($sql) == TRUE) {
-                session_start();
-                $_SESSION['loggedin'] = true;
-                $_SESSION['email'] = $email;
-                header("refresh:1; url=home.html");
-                exit();
-            } 
-            else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
-            }
-        }
-        else {
-            echo '<script>alert("email used")</script>';
-        }
-
         $conn->close();
     }
 ?>
@@ -70,19 +33,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <title>Register</title>
+    <title>Account</title>
 
     <style>
-        input {
-        width: 100%;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
+        .table1 {
+            width: 65%;
+            margin-left: 10%;
         }
 
-        input[type=submit] {
-        background-color: #04AA6D;
-        color: white;
+        .table1, th, td {
+            height: 50px;
+            border: 1px solid grey;
+            border-collapse: collapse;
+            font-size: larger;
+        }
+
+        .table2 {
+            width: 90%;
+            margin-left: 5%;
+        }
+
+        .table2, th, td {
+            height: 50px;
+            border: 1px solid grey;
+            border-collapse: collapse;
+            font-size: larger;
+        }
+
+        input {
+            width: 50%; 
+            margin-left: 25%; 
+            border: none; 
+            background-color: #d9f9f9; 
+            height: 40px; 
+            font-size: 20px;
+        }
+
+        input:hover {
+            background-color: #aaffff; 
         }
     </style>
 
@@ -106,26 +94,52 @@
         </div>
     </header>
 
-    <div style="float: left; padding-left: 40%; padding-top: 2%;">
-        <h1>Register</h1>
-        <form method="POST">
-            <label for="email">Email</label>
-            <br>
-            <input name="email" type="email" style="margin-top: 3%; margin-bottom: 5%; padding: 3%; width: 180px; font-style: italic;" placeholder="Email" required>
-            <br>
-            <label for="password_confirm">Password</label>
-            <br>
-            <input type="password" style="margin-top: 3%; margin-bottom: 5%; padding: 3%; width: 180px; font-style: italic;" minlength="6" placeholder="Password" id="password" required>
-            <input name="password" type="password" style="margin-top: 3%; margin-bottom: 5%; padding: 3%; width: 180px; font-style: italic;" minlength="6" placeholder="Type password again" id="confirm_password" required>
-            <br>
+    <h1 style="color: #af0000; padding-left: 5%; font-size: 40px;">Account</h1>
+
+    <table class="table1">
+        <tr>
+            <td style="padding-left: 1%;">Email:
+                <?php
+                    session_start();
+                    $e = $_SESSION['email'];
+                    echo $e;
+                ?>
+            </td>
+            <td>
+            <?php
+                echo '<form action = "edit_account.php" method="POST">
+                <input type="hidden" name="e" value="'.$e.'">
+                <input type="submit" value="edit">
+                </form>';
+            ?>
+            </td>
+        </tr>
+    </table>
+
+    <br><br><br>
+
+    <table class="table2">
+        <tr>
+            <?php
+                $conn = mysqli_connect("localhost", "root", "123456", "nozuonodie");
+                        
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
             
-            <input type="submit" style="margin-top: 3%; margin-bottom: 5%; padding: 3%;" value="Register" onclick="return Validate()">
+                }
+                $sql = "SELECT `email`, `product`, `price` FROM `cart`";
+            
+                $result = $conn->query($sql);
 
-            <script src="js/script.js"></script>
-        </form> 
-    </div>
-
-    <br style="clear: both;"><br style="clear: both;"><br style="clear: both;">
+                while ($row = $result->fetch_assoc()) {
+                    if ($e == $row['email']) {
+                        echo '<tr><td style="width:85%; padding-left: 1%">'.$row['product'].'</td>
+                        <td style="padding-left: 1%;">$'.$row['price'].'</td></tr>';
+                    }
+                }
+            ?>
+        </tr>
+    </table>
 
     <footer class="container_footer">
         <div class="footer_logo">
@@ -149,6 +163,5 @@
 
 </body>
 </html>
-
 
 
