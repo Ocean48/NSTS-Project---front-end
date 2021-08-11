@@ -64,6 +64,7 @@
                     $go = TRUE;
                 }
             }
+            
             if ($go == TRUE) {
                 
                 $sql2 = "INSERT INTO `cart`(`email`, `product`, `price`) VALUES ('$e','$t','$p')";
