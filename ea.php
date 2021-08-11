@@ -28,5 +28,5 @@
     if(strlen($ne) > 0 OR strlen($np) > 0){
     	$conn->query($sql);
     }
-    header('Location: http://localhost/nozuonodie_back/account.php');
+    header('Location: account.php');
 ?>

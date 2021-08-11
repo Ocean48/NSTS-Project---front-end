@@ -16,31 +16,25 @@
             font-size: larger;
         }
         form{
-   			vertical-align: middle;
+            margin-top: 2%;
+   			margin-left: 20%;
+            font-size: large;
         }
 
-        input[type = "submit"]{
-          background-color: #4CAF50;
-          border: none;
-          color: white;
-          padding: 16px 32px;
-          text-decoration: none;
-          margin: 4px 2px;
-          cursor: pointer;
-          width : 100px;
+        input {
+            height: 30px;
+            width: 15%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
 
-        input[type = "text"]{
-        	color: #fabebe;
-        	border-radius: 18px;
-	        background-color: #7a7391;
-	        border: none;
-	        color: white;
-	        padding: 16px 32px;
-	        text-decoration: none;
-	        margin: 4px 2px;
-	        cursor: pointer;
-	        width : 100px;
+        input[type=submit] {
+            margin-top: 1%;
+            height: 40px;
+            background-color: #04AA6D;
+            color: white;
+            font-size: large;
         }
     </style>
 </head>
@@ -69,9 +63,9 @@
 	    echo '<form action = "ea.php" method="POST">
 	    	<input type="hidden" name="old_email" value = "'.$e.'">
 	    	New Name: <br>
-	    	<input type="text" name="new_email"><br>
+	    	<input type="text" name="new_email"><br><br>
 	    	New Password: <br>
-	    	<input type="text" name="password"><br>
+	    	<input type="text" name="password"><br><br>
 	    	<input type="submit" value = "Confirm">
 	    </form>'
 
