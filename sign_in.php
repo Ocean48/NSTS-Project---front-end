@@ -1,55 +1,62 @@
 <?php
-    if(isset($_POST["email_s"])){
-        $go = TRUE;
-        $email = $_POST["email_s"];
-        $password = $_POST["password_s"];
-        
 
-        $conn = mysqli_connect("localhost", "root", "123456", "nozuonodie");
-                
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
+    session_start();
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+        header("refresh:0.1; url=account.php");
+        exit();
+    }
+    else {
+        if(isset($_POST["email_s"])){
+            $go = TRUE;
+            $email = $_POST["email_s"];
+            $password = $_POST["password_s"];
+            
 
-        }
-        /*
-        else {
-            echo "connedted <br>";
-        }
-        */
-        $sql = "SELECT `email`, `password` FROM `account`";
+            $conn = mysqli_connect("localhost", "root", "123456", "nozuonodie");
+                    
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
 
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-                if ($email == $row['email']) {
-                    if ($password == $row['password']) {
-                        session_start();
-                        $_SESSION['loggedin'] = true;
-                        $_SESSION['email'] = $email;
-                        header("refresh:1; url=home.html");
-                        exit();
-                    }
-                    else {
-                        $go = FALSE;
-                        break;
-                    }
-                }
-                else {   //if email is new
-                    $go = False;
-                }
             }
-        } 
-        /*
-        else {
-            echo "0 results";
-        }
-        */
-        if ($go == FALSE) {
-            echo '<script>alert("wrong email or password")</script>';
-        } 
+            /*
+            else {
+                echo "connedted <br>";
+            }
+            */
+            $sql = "SELECT `email`, `password` FROM `account`";
 
-        $conn->close();
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    if ($email == $row['email']) {
+                        if ($password == $row['password']) {
+                            $_SESSION['loggedin'] = true;
+                            $_SESSION['email'] = $email;
+                            header("refresh:1; url=home.html");
+                            exit();
+                        }
+                        else {
+                            $go = FALSE;
+                            break;
+                        }
+                    }
+                    else {   //if email is new
+                        $go = False;
+                    }
+                }
+            } 
+            /*
+            else {
+                echo "0 results";
+            }
+            */
+            if ($go == FALSE) {
+                echo '<script>alert("wrong email or password")</script>';
+            } 
+
+            $conn->close();
+        }
     }
 ?>
 

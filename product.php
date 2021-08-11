@@ -38,15 +38,15 @@
 
         $t = $_POST['t'];
 
-            $conn = mysqli_connect("localhost", "root", "123456", "nozuonodie");
+        $conn = mysqli_connect("localhost", "root", "123456", "nozuonodie");
                         
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
 
-            }
-            $sql = "SELECT `name`, `image_url`, `info`, `price`, `chart_url` FROM `products`";
+        }
+        $sql = "SELECT `name`, `image_url`, `info`, `price`, `chart_url` FROM `products`";
 
-            $result = $conn->query($sql);
+        $result = $conn->query($sql);
 
         if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             $go = FALSE;
@@ -55,34 +55,33 @@
             while ($row = $result->fetch_assoc()) {
                 if ($t == $row['name']) {
                     echo '<h1 style="color: #af0000; padding-top: 1%; padding-left: 10%; font-size: xx-large;">'.$row['name'].'</h1><br>';
-                    echo '<img style="float: left; padding-left: 10%;" src="'.$row['image_url'].'"width="350" height="350" alt="image">
-                        <img style="float: left; padding-left: 10%;" src="'.$row['chart_url'].'"width="350" height="350" alt="image">';
-
-                    echo '<p style="font-size: 20px; clear: both; padding-top: 2%; padding-left: 5%; padding-right: 5%;">'.$row['info'].'</p>
-                        <p style="font-size: 18px; padding-left: 85%;">Price: $'.$row['price'].'</p>';
+                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="images/Capture.png"width="1250" height="1050" alt="image">
+                    <img style="display: block; margin-left: auto; margin-right: auto;" src="images/Capture2.png"width="1250" height="1050" alt="image">
+                    <img style="display: block; margin-left: auto; margin-right: auto;" src="images/Capture3.png"width="1250" height="1050" alt="image">
+                    <img style="display: block; margin-left: auto; margin-right: auto;" src="images/Capture4.png"width="1250" height="1050" alt="image">';
+                    echo '<button onclick="upload()" style="border: none; background-color: orange; color: #0e0d0d; padding: 1% 3%; margin-left: 45%; margin-top: 2%; text-align: center; font-size: larger; cursor: pointer;">Add to Cart</button>';
+                    $p = $row['price'];
                     $go = TRUE;
-                    break;
                 }
             }
             if ($go == TRUE) {
-                echo "test2";
-                $sql = "INSERT INTO `cart`(`email`, `name`) VALUES ('test2','test2')";
+                
+                $sql2 = "INSERT INTO `cart`(`email`, `product`, `price`) VALUES ('$e','$t','$p')";
+                $conn->query($sql2);
             }
             $conn->close();
         }
 
         else {
-            echo '<br><p style="text-align: center; color: red; font-size: x-large;"><b>Please sign in to use cart!</b></p>';
                 
             while ($row = $result->fetch_assoc()) {
                 if ($t == $row['name']) {
                     echo '<h1 style="color: #af0000; padding-top: 1%; padding-left: 10%; font-size: xx-large;">'.$row['name'].'</h1><br>';
-                    echo '<img style="float: left; padding-left: 10%;" src="'.$row['image_url'].'"width="350" height="350" alt="image">
-                        <img style="float: left; padding-left: 10%;" src="'.$row['chart_url'].'"width="350" height="350" alt="image">';
-                    echo '<p style="font-size: 20px; clear: both; padding-top: 2%; padding-left: 5%; padding-right: 5%;">'.$row['info'].'</p>
-                        <p style="font-size: 18px; padding-left: 85%;">Price: $'.$row['price'].'</p>';
-                    
-                    break;
+                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="images/Capture.png"width="1250" height="1050" alt="image">
+                    <img style="display: block; margin-left: auto; margin-right: auto;" src="images/Capture2.png"width="1250" height="1050" alt="image">
+                    <img style="display: block; margin-left: auto; margin-right: auto;" src="images/Capture3.png"width="1250" height="1050" alt="image">
+                    <img style="display: block; margin-left: auto; margin-right: auto;" src="images/Capture4.png"width="1250" height="1050" alt="image">
+                    <br><p style="text-align: center; color: red; font-size: x-large;"><b>Please sign in to add to cart!</b></p>';
                 }
             }
             $conn->close();
