@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 11, 2021 at 04:31 AM
+-- Generation Time: Aug 11, 2021 at 05:22 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -107,23 +107,21 @@ DROP TABLE IF EXISTS `products`;
 CREATE TABLE IF NOT EXISTS `products` (
   `name` varchar(40) CHARACTER SET utf8 NOT NULL,
   `image_url` varchar(200) CHARACTER SET utf8 NOT NULL,
-  `info` text CHARACTER SET utf8 NOT NULL,
-  `price` float NOT NULL,
-  `chart_url` varchar(200) CHARACTER SET utf8 NOT NULL
+  `price` float NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf16;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`name`, `image_url`, `info`, `price`, `chart_url`) VALUES
-('test1', 'https://i.ibb.co/3S6wCq6/map.png', '谁可以来加拿大旅游：Effective August 9: American citizens and permanent residents of the United States, who currently reside in the United States, who meet specific criteria to qualify as fully vaccinated. September 7 (intended start date): All other foreign nationals who qualify as fully vaccinated. The 3-night hotel stopover requirement will be eliminated for all travellers arriving by air after 12:01 A.M. EDT on August 9.(加拿大永久公民， 加拿大公民直系亲属， 外交人员， 航空公司工作人员和美国公民)\r\n加拿大公共卫生署的新型冠状病毒肺炎咨询热线1-833-784-4397，邮箱phac.info.aspc@canada.ca\r\n航空公司\r\n点击此处了解加拿大航空公司（和加航Rouge）对新型冠状病毒肺炎的应对措施。\r\n点击此处了解西捷航空对新型冠状病毒肺炎的应对措施。\r\n点击此处了解越洋航空对新型冠状病毒肺炎的应对措施。\r\n      -    点击此处了解Swoop航空对新型冠状病毒肺炎的应对措施。\r\n     -     点击此处了解波特航空对新型冠状病毒肺炎的应对措施。\r\n新冠疫情对于加拿大经济的影响（我自己想的）：\r\n', 100.2, 'https://i.ibb.co/3S6wCq6/map.png'),
-('test 2', 'https://i.ibb.co/zxSMYhB/address.png', 'Continuous positive pressure ventilation mode:\r\nContinuous positive pressure automatically adjusts the pressure according to the user\'s position. Suitable for light, moderate and heavy users of obstructive sleep apnea syndrome.\r\n\r\nAutonomous mode:\r\nUsed while the user is breathing on their own. Often used for good respiratory failure, heart failure users.\r\n\r\nTime control mode:\r\nIn addition to setting the inspiratory and expiratory pressure, it controls the inspiratory and expiratory time when the user is unable to breathe on his own. Can be used after surgery or shallow coma patients.\r\n\r\nAutonomous/time control combination mode:\r\nFor both good spontaneous breathing and no spontaneous breathing, automatic recognition and matching of appropriate patterns. For stable and unstable spontaneous breathing population.\r\n', 22.23, 'https://i.ibb.co/zxSMYhB/address.png'),
-('test 3', 'https://i.ibb.co/3S6wCq6/map.png', 'Continuous positive pressure ventilation mode:\r\n Continuous positive pressure automatically adjusts the pressure according to the user\'s position. Suitable for light, moderate and heavy users of obstructive sleep apnea syndrome.\r\n\r\n Autonomous mode:\r\n Used while the user is breathing on their own. Often used for good respiratory failure, heart failure users.\r\n\r\n Time control mode:\r\n In addition to setting the inspiratory and expiratory pressure, it controls the inspiratory and expiratory time when the user is unable to breathe on his own. Can be used after surgery or shallow coma patients.\r\n\r\n Autonomous/time control combination mode:\r\n For both good spontaneous breathing and no spontaneous breathing, automatic recognition and matching of appropriate patterns. For stable and unstable spontaneous breathing population.', 865, 'https://i.ibb.co/3S6wCq6/map.png'),
-('test4', 'https://i.ibb.co/3S6wCq6/map.png', 'Continuous positive pressure ventilation mode:\r\n Continuous positive pressure automatically adjusts the pressure according to the user\'s position. Suitable for light, moderate and heavy users of obstructive sleep apnea syndrome.\r\n\r\n Autonomous mode:\r\n Used while the user is breathing on their own. Often used for good respiratory failure, heart failure users.\r\n\r\n Time control mode:\r\n In addition to setting the inspiratory and expiratory pressure, it controls the inspiratory and expiratory time when the user is unable to breathe on his own. Can be used after surgery or shallow coma patients.\r\n\r\n Autonomous/time control combination mode:\r\n For both good spontaneous breathing and no spontaneous breathing, automatic recognition and matching of appropriate patterns. For stable and unstable spontaneous breathing population.', 342.32, 'https://i.ibb.co/3S6wCq6/map.png'),
-('test 5', 'https://i.ibb.co/3S6wCq6/map.png', '谁可以来加拿大旅游：Effective August 9: American citizens and permanent residents of the United States, who currently reside in the United States, who meet specific criteria to qualify as fully vaccinated. September 7 (intended start date): All other foreign nationals who qualify as fully vaccinated. The 3-night hotel stopover requirement will be eliminated for all travellers arriving by air after 12:01 A.M. EDT on August 9.(加拿大永久公民， 加拿大公民直系亲属， 外交人员， 航空公司工作人员和美国公民)\r\n加拿大公共卫生署的新型冠状病毒肺炎咨询热线1-833-784-4397，邮箱phac.info.aspc@canada.ca\r\n航空公司\r\n 点击此处了解加拿大航空公司（和加航Rouge）对新型冠状病毒肺炎的应对措施。\r\n 点击此处了解西捷航空对新型冠状病毒肺炎的应对措施。\r\n 点击此处了解越洋航空对新型冠状病毒肺炎的应对措施。\r\n     -    点击此处了解Swoop航空对新型冠状病毒肺炎的应对措施。\r\n    -     点击此处了解波特航空对新型冠状病毒肺炎的应对措施。\r\n 新冠疫情对于加拿大经济的影响（我自己想的）：', 5343.99, 'https://i.ibb.co/3S6wCq6/map.png'),
-('test 6', 'https://i.ibb.co/3S6wCq6/map.png', '谁可以来加拿大旅游：Effective August 9: American citizens and permanent residents of the United States, who currently reside in the United States, who meet specific criteria to qualify as fully vaccinated. September 7 (intended start date): All other foreign nationals who qualify as fully vaccinated. The 3-night hotel stopover requirement will be eliminated for all travellers arriving by air after 12:01 A.M. EDT on August 9.(加拿大永久公民， 加拿大公民直系亲属， 外交人员， 航空公司工作人员和美国公民)\r\n加拿大公共卫生署的新型冠状病毒肺炎咨询热线1-833-784-4397，邮箱phac.info.aspc@canada.ca\r\n航空公司\r\n 点击此处了解加拿大航空公司（和加航Rouge）对新型冠状病毒肺炎的应对措施。\r\n 点击此处了解西捷航空对新型冠状病毒肺炎的应对措施。\r\n 点击此处了解越洋航空对新型冠状病毒肺炎的应对措施。\r\n     -    点击此处了解Swoop航空对新型冠状病毒肺炎的应对措施。\r\n    -     点击此处了解波特航空对新型冠状病毒肺炎的应对措施。\r\n 新冠疫情对于加拿大经济的影响（我自己想的）：', 232.29, 'https://i.ibb.co/3S6wCq6/map.png'),
-('test', 'test', 'test', 223.29, 'test');
+INSERT INTO `products` (`name`, `image_url`, `price`) VALUES
+('test1', 'https://i.ibb.co/3S6wCq6/map.png', 100.2),
+('test 2', 'https://i.ibb.co/zxSMYhB/address.png', 22.23),
+('test 3', 'https://i.ibb.co/3S6wCq6/map.png', 865),
+('test4', 'https://i.ibb.co/3S6wCq6/map.png', 342.32),
+('test 5', 'https://i.ibb.co/3S6wCq6/map.png', 5343.99),
+('test 6', 'https://i.ibb.co/3S6wCq6/map.png', 232.29),
+('test', 'test', 223.29);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
