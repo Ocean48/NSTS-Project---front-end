@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 11, 2021 at 05:22 PM
+-- Generation Time: Aug 12, 2021 at 12:21 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -83,7 +83,6 @@ DROP TABLE IF EXISTS `event`;
 CREATE TABLE IF NOT EXISTS `event` (
   `title` varchar(40) CHARACTER SET utf8 NOT NULL,
   `short_info` text CHARACTER SET utf8 NOT NULL,
-  `main_description` text CHARACTER SET utf8 NOT NULL,
   `upload_date` varchar(40) CHARACTER SET utf8 NOT NULL,
   `image_url` varchar(200) CHARACTER SET utf8 NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf16;
@@ -92,10 +91,10 @@ CREATE TABLE IF NOT EXISTS `event` (
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`title`, `short_info`, `main_description`, `upload_date`, `image_url`) VALUES
-('first evetn title test', 'short info should only have 100-250 char, it is a short information of the event.\r\nshort info should only have 100-250 char, it is a short information of the event.\r\nshort info should only have 100-250 char, it is a short information of the event.\r\n', 'Apart from counting words and characters, our online editor can help you to improve word choice and writing style, and, optionally, help you to detect grammar mistakes and plagiarism. To check word count, simply place your cursor into the text box above and start typing. You\'ll see the number of characters and words increase or decrease as you type, delete, and edit them. You can also copy and paste text from another program over into the online editor above. The Auto-Save feature will make sure you won\'t lose any changes while editing, even if you leave the site and come back later. Tip: Bookmark this page now.\r\n\r\nKnowing the word count of a text can be important. For example, if an author has to write a minimum or maximum amount of words for an article, essay, report, story, book, paper, you name it. WordCounter will help to make sure its word count reaches a specific requirement or stays within a certain limit.\r\n\r\nIn addition, WordCounter shows you the top 10 keywords and keyword density of the article you\'re writing. This allows you to know which keywords you use how often and at what percentages. This can prevent you from over-using certain words or word combinations and check for best distribution of keywords in your writing.\r\n\r\nIn the Details overview you can see the average speaking and reading time for your text, while Reading Level is an indicator of the education level a person would need in order to understand the words you’re using.\r\n\r\nDisclaimer: We strive to make our tools as accurate as possible but we cannot guarantee it will always be so.', 'Aus. 08, 2021', 'https://i.ibb.co/3S6wCq6/map.png'),
-('event without image', 'this is the short info for event without image', 'this is the short info for event without image\r\nthis is the short info for event without image', '', ''),
-('event without image', 'this is the short info for event without image', 'this is the short info for event without image\r\nthis is the short info for event without image', '', '');
+INSERT INTO `event` (`title`, `short_info`, `upload_date`, `image_url`) VALUES
+('first evetn title test', 'short info should only have 100-250 char, it is a short information of the event.\r\nshort info should only have 100-250 char, it is a short information of the event.\r\nshort info should only have 100-250 char, it is a short information of the event.\r\n', 'Aus. 08, 2021', 'https://i.ibb.co/3S6wCq6/map.png'),
+('event without image', 'this is the short info for event without image', '', ''),
+('event without image', 'this is the short info for event without image', '', '');
 
 -- --------------------------------------------------------
 
