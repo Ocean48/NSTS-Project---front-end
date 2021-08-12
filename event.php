@@ -30,7 +30,7 @@
             </nav>
         </div>
     </header>
-    <button class="event_button" onclick="window.location.href='news.php'">☚<span style="font-size:x-large;"><b>Back </b></span></button>
+    <button class="event_button" style="margin-top: 1%;" onclick="window.location.href='news.php'">☚<span style="font-size:x-large;"><b>Back </b></span></button>
 
     <?php
         $t = $_POST['t'];
@@ -41,7 +41,7 @@
             die("Connection failed: " . $conn->connect_error);
 
         }
-        $sql = "SELECT `title`, `short_info`, `main_description`, `upload_date`, `image_url` FROM `event`";
+        $sql = "SELECT `title`, `short_info`, `upload_date`, `image_url` FROM `event`";
 
         $result = $conn->query($sql);
         
@@ -49,7 +49,6 @@
             if ($t == $row['title']) {
                 echo '<h1 style="color: #af0000; padding-top: 1%; padding-left: 10%; font-size: xx-large;">'.$row['title'].'</h1><br>';
                 echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url'].'" alt="image">';
-                echo '<p style="font-size: larger; padding-left: 5%; padding-right: 5%;">'.$row['main_description'].'</p><br>';
                 echo '<p style="font-size: large; padding-left: 75%"> Uploaded: '.$row['upload_date'].'</p>';
 
                 break;
