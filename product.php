@@ -31,7 +31,7 @@
         </div>
     </header>
 
-    <button class="event_button" onclick="window.location.href='products.php'">☚<span style="font-size:x-large;"><b>Back </b></span></button>
+    <button class="event_button" style="margin-top: 1%;" onclick="window.location.href='products.php'">☚<span style="font-size:x-large;"><b>Back </b></span></button>
 
     <?php
         session_start();
@@ -59,16 +59,10 @@
                     <img style="display: block; margin-left: auto; margin-right: auto;" src="images/Capture2.png"width="1250" height="1050" alt="image">
                     <img style="display: block; margin-left: auto; margin-right: auto;" src="images/Capture3.png"width="1250" height="1050" alt="image">
                     <img style="display: block; margin-left: auto; margin-right: auto;" src="images/Capture4.png"width="1250" height="1050" alt="image">';
-                    echo '<button onclick="upload()" style="border: none; background-color: orange; color: #0e0d0d; padding: 1% 3%; margin-left: 45%; margin-top: 2%; text-align: center; font-size: larger; cursor: pointer;">Add to Cart</button>';
-                    $p = $row['price'];
-                    $go = TRUE;
+                    echo '<form action = "add.php" method="POST">   
+                    <input name="t" type="hidden" value="'.$t.'">
+                    <input style="border: none; background-color: orange; color: #0e0d0d; padding: 1% 3%; margin-left: 45%; margin-top: 2%; text-align: center; font-size: larger; cursor: pointer;" type="submit" value="Add to Cart"></form>';
                 }
-            }
-
-            if ($go == TRUE) {
-
-                $sql2 = "INSERT INTO `cart`(`email`, `product`, `price`) VALUES ('$e','$t','$p')";
-                $conn->query($sql2);
             }
             $conn->close();
         }

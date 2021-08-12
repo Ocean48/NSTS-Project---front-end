@@ -9,20 +9,12 @@
     <style>
         input {
             background: #f8f8f8;
-            text-align: center;
-            width: 200px;
             border: none;
-            box-sizing: border-box;
-            font-size: 25px;
-        }
-
-        input[type=submit] {
-            color: #000000;
-        }
-
-        input:hover {
-            text-decoration: underline;
-            color: #0b00e3;
+            width: 200px;
+            height: 200px;
+            background-size: cover;
+            background-position: center; 
+            cursor: pointer;
         }
     </style>
 </head>
@@ -60,9 +52,9 @@
         while ($row = $result->fetch_assoc()) {
             echo '<form style="margin-left: 3%; margin-right: 5%;" action = "product.php" method="POST">   
                 <li style="float: left; display: block; margin-left: 15%; margin-top: 2%; list-style-type: none;">
-                    <input name="t" type="submit" value="'.$row['name'].'">    
-                    <br><img src="'.$row['image_url'].'"width="200" height="200" alt="image">
-                    <p style="font-size: 20px; text-align: center;">$'.$row['price'].'</p>
+                    <input name="t" type="hidden" value="'.$row['name'].'">    
+                    <input style="background-image: url('.$row['image_url'].');" type="submit" value=" ">  
+                    <p style="font-size: 20px; text-align: center;">'.$row['name'].'<br>$'.$row['price'].'</p>
                     
                     
                 </li></form>';

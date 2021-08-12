@@ -37,8 +37,9 @@
 
     <style>
         .table1 {
-            width: 65%;
-            margin-left: 10%;
+            width: 60%;
+            margin-left: 9%;
+            margin-top: 5%;
         }
 
         .table1, th, td {
@@ -49,6 +50,7 @@
         }
 
         .table2 {
+            clear: both;
             width: 90%;
             margin-left: 5%;
         }
@@ -71,6 +73,32 @@
 
         input:hover {
             background-color: #aaffff; 
+        }
+
+        .out {
+            margin-top: 3%;
+            margin-right: 5%;
+            float: right;
+            width: 10%; 
+            border: none; 
+            background-color: #d9f9f9; 
+            height: 50px; 
+            font-size: 28px;
+        }
+
+        .checkout {
+            margin-top: 3%;
+            margin-left: 46%;
+            width: 10%; 
+            border: none; 
+            background-color: #ffbb29; 
+            height: 60px; 
+            font-size: 30px;
+            
+        }
+
+        .checkout:hover {
+            background-color: #ff9d1c; 
         }
     </style>
 
@@ -108,13 +136,20 @@
             <td>
             <?php
                 echo '<form action = "edit_account.php" method="POST">
-                <input type="hidden" name="e" value="'.$e.'">
-                <input type="submit" value="edit">
+                    <input type="hidden" name="e" value="'.$e.'">
+                    <input type="submit" value="Edit Info">
                 </form>';
             ?>
             </td>
         </tr>
+        <?php
+        echo '<form action = "sign_out.php">
+            <input class="out" type="submit" value="Sign out">
+        </form>';
+        ?>
     </table>
+
+
 
     <br><br><br>
 
@@ -140,6 +175,11 @@
             ?>
         </tr>
     </table>
+    <?php
+        echo '<form action = "checkout.php">
+            <input class="checkout" type="submit" value="Checkout">
+        </form>';
+    ?>
 
     <footer class="container_footer">
         <div class="footer_logo">
