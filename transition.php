@@ -1,3 +1,21 @@
+<?php
+    session_start();
+	
+	$e = $_SESSION['email'];
+
+	$conn = mysqli_connect("localhost", "root", "123456", "nozuonodie");
+                        
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+
+    }
+
+    $sql = "DELETE FROM `cart` WHERE email = '$e'";
+
+    $conn->query($sql);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,12 +23,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <title>Contact</title>
+    <title>Home</title>
+    <script>
+        var timeleft = 5;
+        var downloadTimer = setInterval(function(){
+        if(timeleft < 0){
+            <?php
+                header("refresh:7; url=home.html");
+            ?>
+        } else {
+            document.getElementById("countdown").innerHTML = "Jump to home page in " + timeleft + " seconds";
+        }
+        timeleft -= 1;
+        }, 1000);
+    </script>
 </head>
 <body>
     <header>
         <div class="container_header">
-            <img src="images/logo.png" alt="logo" class="logo">
+            <img src="https://i.ibb.co/vq7sysz/logo.png" alt="logo" class="logo">
         
             <nav>
                 <ul>
@@ -24,28 +55,11 @@
             </nav>
         </div>
     </header>
-
-    <h1 style="color: #af0000; text-align: center; font-size: 40px;">Contact</h1>
-    <iframe style="float: right; margin-right: 6%;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d184552.57289742303!2d-79.51814179377934!3d43.71815566213178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cb90d7c63ba5%3A0x323555502ab4c477!2sToronto%2C%20ON!5e0!3m2!1sen!2sca!4v1628896136823!5m2!1sen!2sca" width="650" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    <div class="contact_list">
-        <br>
-        <h2 style="padding-left: 10%; font-size: 30px;">NTST-Tech Development Ltd.</h2>
-        <br>
-        <li style="font-size: 22px; list-style-image: url(images/tel.png);"> Tel: (123)456-7890</li>
-        <li style="font-size: 22px; list-style-image: url(images/email.png);"> Email: email@gmail.com</li>
-        <li style="font-size: 22px; list-style-image: url(images/address.png);"> Address: NTST-Tech Development Ltd.</li>
-
-    </div>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
     
+    
+    <div style="text-align: center; color: #d11111;" id="countdown"></div>
+    <h1 style="text-align: center; color: #d11111; padding: 10%;">Thank You For Choosing Us!<br>Your Order Is On The Way</h1>
+
     <footer class="container_footer">
         <div class="footer_logo">
             <img src="images/logo.png" alt="logo">

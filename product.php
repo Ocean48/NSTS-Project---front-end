@@ -73,7 +73,7 @@
                     if($row['image_url7'] != '') {
                         echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url7'].'">';
                     }
-                    echo '<form action = "add.php" method="POST">   
+                    echo '<form action = "product_.php" method="POST">   
                     <input name="t" type="hidden" value="'.$t.'">
                     <input style="border: none; background-color: orange; color: #0e0d0d; padding: 1% 3%; margin-left: 45%; margin-top: 2%; text-align: center; font-size: larger; cursor: pointer;" type="submit" value="Add to Cart"></form>';
                 }

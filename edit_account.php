@@ -62,10 +62,10 @@
 
 	    echo '<form action = "ea.php" method="POST">
 	    	<input type="hidden" name="old_email" value = "'.$e.'">
-	    	New Name: <br>
-	    	<input type="text" name="new_email"><br><br>
+	    	New Email: <br>
+	    	<input style="font-style: italic;" type="email" placeholder="new email" name="new_email"><br><br>
 	    	New Password: <br>
-	    	<input type="text" name="password"><br><br>
+	    	<input style="font-style: italic;" type="password" minlength="6" placeholder="new password" name="password"><br><br>
 	    	<input type="submit" value = "Confirm">
 	    </form>'
 

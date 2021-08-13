@@ -11,9 +11,11 @@
     }
 
     $sql = "UPDATE `account` SET "; 
+    $sql2 = "UPDATE `cart` SET `email` = '$ne' WHERE email = '$oe'"; 
 
     if(strlen($ne) > 0){
     	$sql = $sql."`email` = '".$ne."'";
+        $conn->query($sql2);
     }
 
     if(strlen($np) > 0){
@@ -28,5 +30,8 @@
     if(strlen($ne) > 0 OR strlen($np) > 0){
     	$conn->query($sql);
     }
+
+    session_start();
+    $_SESSION['email'] = $ne;
     header('Location: account.php');
 ?>
