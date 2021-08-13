@@ -45,7 +45,7 @@
             die("Connection failed: " . $conn->connect_error);
 
         }
-        $sql = "SELECT `name`, `image_url`, `price` FROM `products`";
+        $sql = "SELECT `name`, `price`, `image_url`, `image_url2`, `image_url3`, `image_url4`, `image_url5`, `image_url6`, `image_url7` FROM `products`";
 
         $result = $conn->query($sql);
             

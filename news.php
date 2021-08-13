@@ -56,7 +56,7 @@
                 die("Connection failed: " . $conn->connect_error);
 
             }
-            $sql = "SELECT `title`, `short_info`, `upload_date`, `image_url` FROM `event`";
+            $sql = "SELECT `title`, `short_info`, `upload_date`, `image_url`, `image_url2`, `image_url3`, `image_url4`, `image_url5`, `image_url6` FROM `event`";
 
             $result = $conn->query($sql);
 

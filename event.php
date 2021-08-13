@@ -41,14 +41,31 @@
             die("Connection failed: " . $conn->connect_error);
 
         }
-        $sql = "SELECT `title`, `short_info`, `upload_date`, `image_url` FROM `event`";
+        $sql = "SELECT `title`, `short_info`, `upload_date`, `image_url`, `image_url2`, `image_url3`, `image_url4`, `image_url5`, `image_url6` FROM `event`";
 
         $result = $conn->query($sql);
         
         while ($row = $result->fetch_assoc()) {
             if ($t == $row['title']) {
-                echo '<h1 style="color: #af0000; padding-top: 1%; padding-left: 10%; font-size: xx-large;">'.$row['title'].'</h1><br>';
-                echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url'].'" alt="image">';
+                echo '<h1 style="color: #af0000; padding-top: 1%; text-align:center; font-size: xx-large;">'.$row['title'].'</h1><br>';
+                if($row['image_url'] != '') {
+                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url'].'">';
+                }
+                if($row['image_url2'] != '') {
+                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url2'].'">';
+                }
+                if($row['image_url3'] != '') {
+                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url3'].'">';
+                }
+                if($row['image_url4'] != '') {
+                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url4'].'">';
+                }
+                if($row['image_url5'] != '') {
+                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url5'].'">';
+                }
+                if($row['image_url6'] != '') {
+                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url6'].'">';
+                }
                 echo '<p style="font-size: large; padding-left: 75%"> Uploaded: '.$row['upload_date'].'</p>';
 
                 break;

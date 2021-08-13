@@ -44,7 +44,7 @@
             die("Connection failed: " . $conn->connect_error);
 
         }
-        $sql = "SELECT `name`, `image_url`, `price` FROM `products`";
+        $sql = "SELECT `name`, `price`, `image_url`, `image_url2`, `image_url3`, `image_url4`, `image_url5`, `image_url6`, `image_url7` FROM `products`";
 
         $result = $conn->query($sql);
 
@@ -54,11 +54,25 @@
 
             while ($row = $result->fetch_assoc()) {
                 if ($t == $row['name']) {
-                    echo '<h1 style="color: #af0000; padding-top: 1%; padding-left: 10%; font-size: xx-large;">'.$row['name'].'</h1><br>';
-                    echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="images/Capture.png"width="1250" height="1050" alt="image">
-                    <img style="display: block; margin-left: auto; margin-right: auto;" src="images/Capture2.png"width="1250" height="1050" alt="image">
-                    <img style="display: block; margin-left: auto; margin-right: auto;" src="images/Capture3.png"width="1250" height="1050" alt="image">
-                    <img style="display: block; margin-left: auto; margin-right: auto;" src="images/Capture4.png"width="1250" height="1050" alt="image">';
+                    echo '<h1 style="color: #af0000; padding-top: 1%; text-align:center; font-size: xx-large;">'.$row['name'].'</h1><br>';
+                    if($row['image_url2'] != '') {
+                        echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url2'].'">';
+                    }
+                    if($row['image_url3'] != '') {
+                        echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url3'].'">';
+                    }
+                    if($row['image_url4'] != '') {
+                        echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url4'].'">';
+                    }
+                    if($row['image_url5'] != '') {
+                        echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url5'].'">';
+                    }
+                    if($row['image_url6'] != '') {
+                        echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url6'].'">';
+                    }
+                    if($row['image_url7'] != '') {
+                        echo '<img style="display: block; margin-left: auto; margin-right: auto;" src="'.$row['image_url7'].'">';
+                    }
                     echo '<button onclick="" style="border: none; background-color: orange; color: #0e0d0d; padding: 1% 3%; margin-left: 45%; margin-top: 2%; text-align: center; font-size: larger; cursor: pointer;">Add to Cart</button>';
                     $p = $row['price'];
                     $go = True;
