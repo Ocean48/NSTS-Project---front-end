@@ -18,7 +18,7 @@
         }
 
         input[type=submit] {
-            background-color: #d0fcfc;
+            background-color: #f8f8f8;
             color: #180101;
         }
 
@@ -63,9 +63,10 @@
             $count = mysqli_num_rows($result);
             
             while ($row = $result->fetch_assoc()) {
-                echo '<form style="background-color: #e0fcfc; margin-left: 5%; margin-right: 5%;" action = "event.php" method="POST">
+                echo '<form style="border: 2px solid grey; margin-bottom: 3%; margin-left: 5%; margin-right: 5%;" action = "event.php" method="POST">
                 <li style=" margin-top: 2%; list-style-type: none;">
-                    <input name="t" type="submit" value="'.$row['title'].'">
+                    <input name="t" type="hidden" value="'.$row['title'].'">
+                    <input style="font-weight: bold;"type="submit" value="'.$row['title'].'  ➜">
                         <ul>
                             <li style="list-style-type: none; padding-right: 0.25%;">'.substr($row['short_info'],0, 250).'</li>
                                 <ul>
