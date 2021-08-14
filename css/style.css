@@ -128,7 +128,7 @@ header a:hover::before {
 
 .slideshow-container {
     object-fit: cover;
-    padding-top: 5px;
+    padding-top: 1%;
     width: 65%;
     position: relative;
     margin: auto;

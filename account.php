@@ -165,20 +165,25 @@
                 $sql = "SELECT `email`, `product`, `price` FROM `cart`";
             
                 $result = $conn->query($sql);
+                
+                $go = FALSE;
 
                 while ($row = $result->fetch_assoc()) {
                     if ($e == $row['email']) {
                         echo '<tr><td style="width:85%; padding-left: 1%">'.$row['product'].'</td>
                         <td style="padding-left: 1%;">$'.$row['price'].'</td></tr>';
+                        $go = TRUE;
                     }
                 }
             ?>
         </tr>
     </table>
     <?php
-        echo '<form action = "checkout.php">
-            <input class="checkout" type="submit" value="Checkout">
-        </form>';
+        if ($go == TRUE){
+            echo '<form action = "checkout.php">
+                <input class="checkout" type="submit" value="Checkout">
+            </form>';
+        }
     ?>
 
     <footer class="container_footer">

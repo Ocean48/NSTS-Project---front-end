@@ -66,7 +66,7 @@
                 echo '<form style="border: 2px solid grey; margin-bottom: 3%; margin-left: 5%; margin-right: 5%;" action = "event.php" method="POST">
                 <li style=" margin-top: 2%; list-style-type: none;">
                     <input name="t" type="hidden" value="'.$row['title'].'">
-                    <input style="font-weight: bold;"type="submit" value="'.$row['title'].'  ➜">
+                    <input style="font-weight: bold; cursor: pointer;"type="submit" value="'.$row['title'].'  ➜">
                         <ul>
                             <li style="list-style-type: none; padding-right: 0.25%;">'.substr($row['short_info'],0, 250).'</li>
                                 <ul>
