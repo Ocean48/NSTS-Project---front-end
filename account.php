@@ -167,11 +167,22 @@
                 $result = $conn->query($sql);
                 
                 $go = FALSE;
+                
+                echo '<tr>
+                <td width: 40% style="padding-left: 1%;">Product</td>
+                <td width: 40% style="padding-left: 1%;">Price</td>
+                <td width: 20%> </td>
+                </tr>';
 
                 while ($row = $result->fetch_assoc()) {
                     if ($e == $row['email']) {
-                        echo '<tr><td style="width:85%; padding-left: 1%">'.$row['product'].'</td>
-                        <td style="padding-left: 1%;">$'.$row['price'].'</td></tr>';
+                        echo '<tr><td style="padding-left: 1%; font-size: large;">'.$row['product'].'</td>
+                        <td style="padding-left: 1%; font-size: large;">$'.$row['price'].'</td>
+                        <td><form action = "delete_cart.php" method="POST">
+                        <input type = "hidden" name = "e" value = "'.$row['email'] .'">
+                        <input type = "hidden" name = "p" value = "'.$row['product'] .'">
+                        <input type = "submit" value = "delete">
+                        </form></td></tr>';
                         $go = TRUE;
                     }
                 }
