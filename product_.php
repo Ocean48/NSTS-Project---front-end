@@ -94,7 +94,7 @@
         </div>
         <h2 class="footer_comp_name">NTST-Tech Development Ltd.</h2>
         <div class="contact_us">
-            <li style="font-size: x-large; font-weight: bold;">CONTACT US</li>
+            <a style="color: #e9e9e9; text-decoration: none; font-size: x-large; font-weight: bold;" href="contact.html"><li>CONTACT US</li></a>
             <li style="background: url(https://i.ibb.co/3pm5jWx/tel.png) no-repeat 0; padding-left: 12%;">(123)456-7890</li>
             <li style="background: url(https://i.ibb.co/WHscy1Q/email.png) no-repeat 0; padding-left: 12%;">email@gmail.com</li>
         </div> 
