@@ -51,7 +51,7 @@
             die("Connection failed: " . $conn->connect_error);
 
         }
-        $sql = "SELECT `name`, `price`, `image_url`, `image_url2`, `image_url3`, `image_url4`, `image_url5`, `image_url6`, `image_url7` FROM `products`";
+        $sql = "SELECT `name`, `price`, `key_word`, `image_url`, `image_url2`, `image_url3`, `image_url4`, `image_url5`, `image_url6`, `image_url7` FROM `products`";
 
         $result = $conn->query($sql);
         
@@ -77,6 +77,18 @@
                         }
                     }
                 }
+
+                $k = $row['key_word'];
+                $name = explode(" ", $k);
+                
+                foreach ($words as $i) {
+                    foreach ($name as $j) {
+                        if(strcmp(strtolower($i), strtolower($j)) == 0){
+                            $counter++;
+                        }
+                    }
+                }
+
                 if($counter > 0){
                     $a[$n."=".$row['image_url']."=".$row['price']] = $counter;
                 }
