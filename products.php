@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <title>Products</title>
     <style>
-        input {
+        .products {
             background: #f8f8f8;
             border: none;
             width: 200px;
@@ -26,7 +26,6 @@
             <nav>
                 <ul>
                     <li><a href="home.html">Home</a></li>
-                    
                     <li><a href="products.php">Products</a></li>
                     <li><a href="news.php">News</a></li>
                     <li><a href="contact.html">Contact</a></li>
@@ -38,6 +37,13 @@
 
     <h1 style="color: #af0000; text-align: center; font-size: 40px;">Products</h1>
 
+    <form action="products.php" method="post">
+        <input style="background: #eeeeee; border: 1px solid #000000; border-radius: 5px; width: 200px; height: 30px; cursor: pointer; margin-left: 20%;" type="text" name="comments">
+        <input style="margin-left: 1%; border: 1px solid #000000; border-radius: 5px; width: 90px; height: 30px; font-size: large; cursor: pointer;" type="submit" name="button" value="Search"/>
+        <br><br>
+    </form>
+
+
     <?php
         $conn = mysqli_connect("localhost", "root", "123456", "nozuonodie");
                     
@@ -48,16 +54,61 @@
         $sql = "SELECT `name`, `price`, `image_url`, `image_url2`, `image_url3`, `image_url4`, `image_url5`, `image_url6`, `image_url7` FROM `products`";
 
         $result = $conn->query($sql);
-            
-        while ($row = $result->fetch_assoc()) {
-            echo '<form style="margin-left: 3%; margin-right: 5%;" action = "product.php" method="POST">   
-                <li style="float: left; display: block; margin-left: 15%; margin-top: 2%; list-style-type: none;">
-                    <input name="t" type="hidden" value="'.$row['name'].'">    
-                    <input style="background-image: url('.$row['image_url'].');" type="submit" value=" ">  
-                    <p style="font-size: 20px; text-align: center;">'.$row['name'].'<br>$'.$row['price'].'</p>
-                    
-                    
-                </li></form>';
+        
+
+        if (isset($_POST['comments']) AND strlen($_POST['comments'])>0) {
+
+            $a = [];
+            $comments= $_POST['comments'];
+        
+
+            $words = explode(" ", $comments);
+
+
+            while($row = $result->fetch_assoc()){
+                $n = $row['name'];
+                $name = explode(" ", $n);
+                $counter = 0;
+                
+                foreach ($words as $i) {
+                    foreach ($name as $j) {
+                        if(strcmp(strtolower($i), strtolower($j)) == 0){
+                            $counter++;
+                        }
+                    }
+                }
+                if($counter > 0){
+                    $a[$n."=".$row['image_url']."=".$row['price']] = $counter;
+                }
+            }
+
+            foreach($a as $x=>$v){
+                $t = explode("=", $x);
+
+                echo '<form style="margin-left: 3%; margin-right: 5%;" action = "product.php" method="POST">   
+                    <li style="float: left; display: block; margin-left: 15%; margin-top: 2%; list-style-type: none;">
+                        <input class="products" name="t" type="hidden" value="'.$t[0].'">    
+                        <input class="products" style="background-image: url('.$t[1].');" type="submit" value=" ">  
+                        <p style="font-size: 20px; text-align: center;">'.$t[0].'<br>$'.$t[2].'</p>
+                        
+                        
+                    </li></form>';
+            }
+
+        }
+
+
+        else{
+            while ($row = $result->fetch_assoc()) {
+                echo '<form style="margin-left: 3%; margin-right: 5%;" action = "product.php" method="POST">   
+                    <li style="float: left; display: block; margin-left: 15%; margin-top: 2%; list-style-type: none;">
+                        <input class="products" name="t" type="hidden" value="'.$row['name'].'">    
+                        <input class="products" style="background-image: url('.$row['image_url'].');" type="submit" value=" ">  
+                        <p style="font-size: 20px; text-align: center;">'.$row['name'].'<br>$'.$row['price'].'</p>
+                        
+                        
+                    </li></form>';
+            }
         }
         $conn->close();
     ?>
