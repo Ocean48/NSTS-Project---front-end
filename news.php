@@ -51,7 +51,7 @@
 
 
     <form action="news.php" method="post">
-        <input style="background: #eeeeee; border: 1px solid #000000; border-radius: 5px; width: 200px; height: 30px; cursor: pointer; margin-left: 20%;" type="text" name="comments">
+        <input style="background: #eeeeee; border: 1px solid #000000; border-radius: 5px; width: 50%; height: 30px; cursor: pointer; margin-left: 22%;" type="text" name="comments">
         <input style="margin-left: 1%; border: 1px solid #000000; border-radius: 5px; width: 90px; height: 30px; font-size: large; cursor: pointer;" type="submit" name="button" value="Search"/>
         <br><br><br>
     </form>
