@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 13, 2021 at 02:43 AM
+-- Generation Time: Aug 25, 2021 at 04:06 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -41,7 +41,7 @@ INSERT INTO `account` (`email`, `password`) VALUES
 ('sirayno2@gmail.com', 'siray123'),
 ('test@gamil.com', '123456'),
 ('abc@gmail.com', '654321'),
-('gg@g.g', 'gggggg'),
+('g@g.g', 'gggggg'),
 ('test2@gmail.com', '666666'),
 ('siray@gmail.com', '111111'),
 ('test3@gmail.ca', '000000'),
@@ -70,9 +70,8 @@ CREATE TABLE IF NOT EXISTS `cart` (
 
 INSERT INTO `cart` (`email`, `product`, `price`) VALUES
 ('sirayno2@gmail.com', 'Test Product 3', 880),
-('abc@gmail.com', 'Test Product', 1299),
-('abc@gmail.com', 'Test Product', 1299),
-('abc@gmail.com', 'Test Product 3', 880);
+('abc@gmail.com', 'Test Product 4', 1680),
+('g@g.g', 'Test Product 2', 680);
 
 -- --------------------------------------------------------
 
@@ -84,6 +83,7 @@ DROP TABLE IF EXISTS `event`;
 CREATE TABLE IF NOT EXISTS `event` (
   `title` varchar(200) CHARACTER SET utf8 NOT NULL,
   `short_info` text CHARACTER SET utf8 NOT NULL,
+  `key_word` text CHARACTER SET utf8 NOT NULL,
   `upload_date` varchar(40) CHARACTER SET utf8 NOT NULL,
   `image_url` varchar(200) CHARACTER SET utf8 NOT NULL,
   `image_url2` varchar(200) CHARACTER SET utf8 NOT NULL,
@@ -97,8 +97,10 @@ CREATE TABLE IF NOT EXISTS `event` (
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`title`, `short_info`, `upload_date`, `image_url`, `image_url2`, `image_url3`, `image_url4`, `image_url5`, `image_url6`) VALUES
-('Congratulations to NPPV & LTOT officially entering the North American market', 'Congratulations, NPPV & LTOT is officially stationed in the North American market starting today!', '2021, 08 02', 'https://i.ibb.co/x84KJR3/news1.png', 'https://i.ibb.co/vJDcyqp/news2.png', '', '', '', '');
+INSERT INTO `event` (`title`, `short_info`, `key_word`, `upload_date`, `image_url`, `image_url2`, `image_url3`, `image_url4`, `image_url5`, `image_url6`) VALUES
+('test', 'test', '', 'test', 'https://i.ibb.co/x84KJR3/news1.png', '', '', '', '', ''),
+('Congratulations to NPPV & LTOT officially entering the North American market', 'Congratulations, NPPV & LTOT is officially stationed in the North American market starting today!', '', '2021, 08 02', 'https://i.ibb.co/x84KJR3/news1.png', 'https://i.ibb.co/vJDcyqp/news2.png', '', '', '', ''),
+('ray', 'ray', 'ray', '2024', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -110,6 +112,7 @@ DROP TABLE IF EXISTS `products`;
 CREATE TABLE IF NOT EXISTS `products` (
   `name` varchar(100) CHARACTER SET utf8 NOT NULL,
   `price` float NOT NULL,
+  `key_word` text CHARACTER SET utf8 NOT NULL,
   `image_url` varchar(200) CHARACTER SET utf8 NOT NULL,
   `image_url2` varchar(200) CHARACTER SET utf8 NOT NULL,
   `image_url3` varchar(200) CHARACTER SET utf8 NOT NULL,
@@ -123,11 +126,12 @@ CREATE TABLE IF NOT EXISTS `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`name`, `price`, `image_url`, `image_url2`, `image_url3`, `image_url4`, `image_url5`, `image_url6`, `image_url7`) VALUES
-('Test Product', 1299, 'https://i.ibb.co/GMG4z0V/image3.png', 'https://i.ibb.co/7g7cbNV/product1.png', 'https://i.ibb.co/qCLVPnc/product2.png', '', '', '', ''),
-('Test Product 2', 680, 'https://i.ibb.co/D71KkWw/image4.png', 'https://i.ibb.co/7g7cbNV/product1.png', 'https://i.ibb.co/qCLVPnc/product2.png', '', '', '', ''),
-('Test Product 3', 880, 'https://i.ibb.co/GMG4z0V/image3.png', 'https://i.ibb.co/7g7cbNV/product1.png', 'https://i.ibb.co/qCLVPnc/product2.png', '', '', '', ''),
-('Test Product 4', 1680, 'https://i.ibb.co/D71KkWw/image4.png', 'https://i.ibb.co/7g7cbNV/product1.png', 'https://i.ibb.co/qCLVPnc/product2.png', '', '', '', '');
+INSERT INTO `products` (`name`, `price`, `key_word`, `image_url`, `image_url2`, `image_url3`, `image_url4`, `image_url5`, `image_url6`, `image_url7`) VALUES
+('Test Product', 1299, '', 'https://i.ibb.co/GMG4z0V/image3.png', 'https://i.ibb.co/7g7cbNV/product1.png', 'https://i.ibb.co/qCLVPnc/product2.png', '', '', '', ''),
+('Test Product 2', 680, '', 'https://i.ibb.co/D71KkWw/image4.png', 'https://i.ibb.co/7g7cbNV/product1.png', 'https://i.ibb.co/qCLVPnc/product2.png', '', '', '', ''),
+('Test Product 3', 880, '', 'https://i.ibb.co/GMG4z0V/image3.png', 'https://i.ibb.co/7g7cbNV/product1.png', 'https://i.ibb.co/qCLVPnc/product2.png', '', '', '', ''),
+('Test Product 4', 1680, '', 'https://i.ibb.co/D71KkWw/image4.png', 'https://i.ibb.co/7g7cbNV/product1.png', 'https://i.ibb.co/qCLVPnc/product2.png', '', '', '', ''),
+('HDH82', 311, 'easy setup ', '', '', '', '', '', '', '');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
