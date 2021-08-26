@@ -38,7 +38,7 @@
     <h1 style="color: #af0000; text-align: center; font-size: 40px;">Products</h1>
 
     <form action="products.php" method="post">
-        <input style="background: #eeeeee; border: 1px solid #000000; border-radius: 5px; width: 50%; height: 30px; cursor: pointer; margin-left: 22%;" type="text" name="comments">
+        <input style="background: #eeeeee; border: 1px solid #000000; border-radius: 5px; width: 45%; height: 30px; cursor: pointer; margin-left: 24%;" type="text" name="comments">
         <input style="margin-left: 1%; border: 1px solid #000000; border-radius: 5px; width: 90px; height: 30px; font-size: large; cursor: pointer;" type="submit" name="button" value="Search"/>
         <br><br>
     </form>

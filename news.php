@@ -51,7 +51,7 @@
 
 
     <form action="news.php" method="post">
-        <input style="background: #eeeeee; border: 1px solid #000000; border-radius: 5px; width: 50%; height: 30px; cursor: pointer; margin-left: 22%;" type="text" name="comments">
+        <input style="background: #eeeeee; border: 1px solid #000000; border-radius: 5px; width: 45%; height: 30px; cursor: pointer; margin-left: 24%;" type="text" name="comments">
         <input style="margin-left: 1%; border: 1px solid #000000; border-radius: 5px; width: 90px; height: 30px; font-size: large; cursor: pointer;" type="submit" name="button" value="Search"/>
         <br><br><br>
     </form>
@@ -110,7 +110,7 @@
                 foreach($a as $x=>$v){
                     $t = explode("=", $x);
 
-                    echo '<form style="border: 2px solid grey; margin-bottom: 3%; margin-left: 5%; margin-right: 5%;" action = "event.php" method="POST">
+                    echo '<form style="border: 2px solid grey; margin-bottom: 3%; margin-left: 15%; margin-right: 15%;" action = "event.php" method="POST">
                     <li style=" margin-top: 2%; list-style-type: none;">
                         <input class="news" name="t" type="hidden" value="'.$t[0].'">
                         <input class="news" style="font-weight: bold; cursor: pointer;"type="submit" value="'.$t[0].'  ➜">
@@ -130,7 +130,7 @@
                 $count = mysqli_num_rows($result);
                 
                 while ($row = $result->fetch_assoc()) {
-                    echo '<form style="border: 2px solid grey; margin-bottom: 3%; margin-left: 5%; margin-right: 5%;" action = "event.php" method="POST">
+                    echo '<form style="border: 2px solid grey; margin-bottom: 3%; margin-left: 15%; margin-right: 15%;" action = "event.php" method="POST">
                     <li style=" margin-top: 2%; list-style-type: none;">
                         <input class="news" name="t" type="hidden" value="'.$row['title'].'">
                         <input class="news" style="font-weight: bold; cursor: pointer;"type="submit" value="'.$row['title'].'  ➜">
