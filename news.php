@@ -51,7 +51,7 @@
 
 
     <form action="news.php" method="post">
-        <input style="background: #eeeeee; border: 1px solid #000000; border-radius: 5px; width: 45%; height: 30px; cursor: pointer; margin-left: 24%;" type="text" name="comments">
+    <input style="background: #eeeeee; border: 1px solid #000000; border-radius: 5px; width: 45%; height: 30px; cursor: pointer; margin-left: 24%;" type="text" name="comments">
         <input style="margin-left: 1%; border: 1px solid #000000; border-radius: 5px; width: 90px; height: 30px; font-size: large; cursor: pointer;" type="submit" name="button" value="Search"/>
         <br><br><br>
     </form>
@@ -67,11 +67,11 @@
             }
             $sql = "SELECT `title`, `short_info`, `key_word`, `upload_date`, `image_url`, `image_url2`, `image_url3`, `image_url4`, `image_url5`, `image_url6` FROM `event`";
 
-            $result = $conn->query($sql);
+            $result = $conn->query($sql) or die($conn->error);
+
+            $a = [];
 
             if (isset($_POST['comments']) AND strlen($_POST['comments'])>0) {
-
-                $a = [];
                 $comments= $_POST['comments'];
             
 
@@ -107,42 +107,31 @@
                     }
                 }
 
-                foreach($a as $x=>$v){
-                    $t = explode("=", $x);
-
-                    echo '<form style="border: 2px solid grey; margin-bottom: 3%; margin-left: 15%; margin-right: 15%;" action = "event.php" method="POST">
-                    <li style=" margin-top: 2%; list-style-type: none;">
-                        <input class="news" name="t" type="hidden" value="'.$t[0].'">
-                        <input class="news" style="font-weight: bold; cursor: pointer;"type="submit" value="'.$t[0].'  ➜">
-                            <ul>
-                                <li style="list-style-type: none; padding-right: 0.25%;">'.substr($t[1],0, 250).'</li>
-                                    <ul>
-                                    <li style="list-style-type: none; padding-top: 0.25%; padding-bottom: 1%; padding-left: 80%;"> Uploaded: '.$t[2].'</li>
-                                    </ul>
-                            </ul>
-                    </li></form>';
-                }
-
             }
 
 
             else{
-                $count = mysqli_num_rows($result);
-                
-                while ($row = $result->fetch_assoc()) {
-                    echo '<form style="border: 2px solid grey; margin-bottom: 3%; margin-left: 15%; margin-right: 15%;" action = "event.php" method="POST">
-                    <li style=" margin-top: 2%; list-style-type: none;">
-                        <input class="news" name="t" type="hidden" value="'.$row['title'].'">
-                        <input class="news" style="font-weight: bold; cursor: pointer;"type="submit" value="'.$row['title'].'  ➜">
-                            <ul>
-                                <li style="list-style-type: none; padding-right: 0.25%;">'.substr($row['short_info'],0, 250).'</li>
-                                    <ul>
-                                    <li style="list-style-type: none; padding-top: 0.25%; padding-bottom: 1%; padding-left: 80%;"> Uploaded: '.$row['upload_date'].'</li>
-                                    </ul>
-                            </ul>
-                    </li></form>';
+                while($row = $result->fetch_assoc()){
+                    $a[$row['title']."=".$row['short_info']."=".$row['upload_date']] = $row['upload_date'];
                 }
             }
+            arsort($a);
+
+            foreach($a as $x=>$v){
+                $t = explode("=", $x);
+
+                echo '<form style="border: 2px solid grey; margin-bottom: 3%; margin-left: 15%; margin-right: 15%;" action = "event.php" method="POST">
+                    <li style=" margin-top: 2%; list-style-type: none;">
+                    <input class="news" name="t" type="hidden" value="'.$t[0].'">
+                    <input class="news" style="font-weight: bold; cursor: pointer;"type="submit" value="'.$t[0].'  ➜">
+                        <ul>
+                            <li style="list-style-type: none; padding-right: 0.25%;">'.substr($t[1],0, 250).'</li>
+                                <ul>
+                                <li style="list-style-type: none; padding-top: 0.25%; padding-bottom: 1%; padding-left: 80%;"> Uploaded: '.$t[2].'</li>
+                                </ul>
+                        </ul>
+                    </li></form>';
+                }
             $conn->close();
         ?>
 
@@ -169,5 +158,3 @@
     </footer>
 </body>
 </html>
-
-
