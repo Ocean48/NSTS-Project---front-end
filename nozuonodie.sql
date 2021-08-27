@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 25, 2021 at 04:06 PM
+-- Generation Time: Aug 27, 2021 at 04:34 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -38,18 +38,28 @@ CREATE TABLE IF NOT EXISTS `account` (
 --
 
 INSERT INTO `account` (`email`, `password`) VALUES
+('test2@gmail.com', '123456'),
 ('sirayno2@gmail.com', 'siray123'),
-('test@gamil.com', '123456'),
-('abc@gmail.com', '654321'),
-('g@g.g', 'gggggg'),
-('test2@gmail.com', '666666'),
-('siray@gmail.com', '111111'),
-('test3@gmail.ca', '000000'),
-('n@n.n', 'nnnnnn'),
-('test48@gmail.com', '000000'),
-('test5@gmail.com', '123456'),
-('test6@gmail.com', '222222'),
-('test7@gmail.com', 'pass123');
+('admin', '123456');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `user_name` varchar(40) CHARACTER SET utf8 NOT NULL,
+  `password` varchar(40) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf16;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`user_name`, `password`) VALUES
+('admin', '123456');
 
 -- --------------------------------------------------------
 
@@ -70,8 +80,7 @@ CREATE TABLE IF NOT EXISTS `cart` (
 
 INSERT INTO `cart` (`email`, `product`, `price`) VALUES
 ('sirayno2@gmail.com', 'Test Product 3', 880),
-('abc@gmail.com', 'Test Product 4', 1680),
-('g@g.g', 'Test Product 2', 680);
+('sirayno2@gmail.com', 'Test Product 2', 680);
 
 -- --------------------------------------------------------
 
@@ -98,9 +107,9 @@ CREATE TABLE IF NOT EXISTS `event` (
 --
 
 INSERT INTO `event` (`title`, `short_info`, `key_word`, `upload_date`, `image_url`, `image_url2`, `image_url3`, `image_url4`, `image_url5`, `image_url6`) VALUES
-('test', 'test', '', 'test', 'https://i.ibb.co/x84KJR3/news1.png', '', '', '', '', ''),
 ('Congratulations to NPPV & LTOT officially entering the North American market', 'Congratulations, NPPV & LTOT is officially stationed in the North American market starting today!', '', '2021, 08 02', 'https://i.ibb.co/x84KJR3/news1.png', 'https://i.ibb.co/vJDcyqp/news2.png', '', '', '', ''),
-('ray', 'ray', 'ray', '2024', '', '', '', '', '', '');
+('test', 'test', 'test f', '2021, 09 23', '', '', '', '', '', ''),
+('6543', '543', '543', '2022, 09 23', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
