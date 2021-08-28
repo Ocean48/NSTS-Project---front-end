@@ -17,13 +17,14 @@
         }
         form{
             margin-top: 2%;
-   			margin-left: 20%; 
+   			margin-left: 45%; 
+            margin-right: 45%; 
             font-size: large;
         }
 
         input {
-            height: 30px;
-            width: 15%;
+            height: 35px;
+            width: 200px;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
