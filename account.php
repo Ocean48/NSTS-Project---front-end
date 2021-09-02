@@ -1,4 +1,5 @@
 <?php
+    session_start();
     if(isset($_POST["email_s"])){
         $go = TRUE;
         $email = $_POST["email_s"];
@@ -128,7 +129,7 @@
         <tr>
             <td style="padding-left: 1%;">Email:
                 <?php
-                    session_start();
+                    
                     $e = $_SESSION['email'];
                     echo $e;
                 ?>
