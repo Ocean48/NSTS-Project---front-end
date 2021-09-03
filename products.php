@@ -45,7 +45,7 @@
 
 
     <?php
-        $conn = mysqli_connect("localhost", "root", "123456", "nozuonodie");
+        $conn = mysqli_connect("sql304.epizy.com", "epiz_29619319", "xAqCxk4Urp", "epiz_29619319_test");
                     
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
