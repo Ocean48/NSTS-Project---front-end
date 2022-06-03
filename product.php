@@ -38,7 +38,7 @@
 
         $t = $_POST['t'];
 
-        $conn = mysqli_connect("localhost", "root", "123456", "nozuonodie");
+        $conn = mysqli_connect("localhost", "chen2d_test", "123456", "chen2d_test");
 
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
